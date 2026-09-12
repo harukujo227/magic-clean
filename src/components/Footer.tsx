@@ -11,11 +11,11 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 lg:grid-cols-[1.1fr_0.8fr_0.9fr_1.1fr] lg:px-8">
         <div>
           <Image
-            src="/images/logo.svg"
-            alt="Magic Cleaning"
-            width={168}
-            height={44}
-            className="mb-4"
+            src="/images/logo.png"
+            alt="Magic Clean Cleaning Services"
+            width={200}
+            height={72}
+            className="mb-4 h-14 w-auto"
           />
           <p className="max-w-[28ch] leading-relaxed">
             House and office cleaning across {site.area}.

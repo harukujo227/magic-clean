@@ -131,7 +131,7 @@ export function Hero() {
               id="hero-brand"
               className="brand-glow mb-3 font-display text-[clamp(3rem,8vw,5.5rem)] font-extrabold leading-[0.92] tracking-[-0.04em]"
             >
-              Magic Cleaning
+              Magic Clean
             </p>
 
             <div className="mb-5 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">

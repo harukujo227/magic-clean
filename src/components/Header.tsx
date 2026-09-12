@@ -35,14 +35,14 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between gap-4 px-5 lg:px-8">
-        <Link href="#top" className="shrink-0" aria-label="Magic Cleaning home">
+        <Link href="#top" className="shrink-0" aria-label="Magic Clean home">
           <Image
-            src="/images/logo.svg"
-            alt="Magic Cleaning"
-            width={168}
-            height={44}
+            src="/images/logo.png"
+            alt="Magic Clean Cleaning Services"
+            width={200}
+            height={72}
             priority
-            className="h-10 w-auto"
+            className="h-12 w-auto sm:h-14"
           />
         </Link>
 

@@ -1,6 +1,6 @@
 export const site = {
-  name: "Magic Cleaning",
-  legalName: "Magic Cleaning",
+  name: "Magic Clean",
+  legalName: "Magic Clean Cleaning Services",
   tagline: "House and office cleaning across Cambridgeshire & Huntingdonshire",
   phoneDisplay: "+44 7400 126 612",
   phoneHref: "tel:+447400126612",

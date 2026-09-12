@@ -18,21 +18,21 @@ const syne = Syne({
 export const metadata: Metadata = {
   title: {
     default:
-      "Magic Cleaning | House & Office Cleaning in Cambridgeshire & Huntingdonshire",
-    template: "%s | Magic Cleaning",
+      "Magic Clean | House & Office Cleaning in Cambridgeshire & Huntingdonshire",
+    template: "%s | Magic Clean",
   },
   description:
-    "Magic Cleaning — professional house and office cleaning across Cambridgeshire and Huntingdonshire. DBS checked, friendly service, free quotes.",
+    "Magic Clean — professional house and office cleaning across Cambridgeshire and Huntingdonshire. DBS checked, friendly service, free quotes.",
   metadataBase: new URL("https://magiccleaning.local"),
   openGraph: {
-    title: "Magic Cleaning",
+    title: "Magic Clean",
     description:
       "Professional house and office cleaning across Cambridgeshire and Huntingdonshire.",
     type: "website",
     locale: "en_GB",
   },
   icons: {
-    icon: "/logo.svg",
+    icon: "/logo.png",
   },
 };
 
