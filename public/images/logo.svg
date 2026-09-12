@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" fill="none" role="img" aria-labelledby="mcTitle">
+  <title id="mcTitle">Magic Cleaning</title>
+  <defs>
+    <linearGradient id="mGrad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1AA7B5"/>
+      <stop offset="1" stop-color="#0A5C62"/>
+    </linearGradient>
+  </defs>
+  <!-- Mark inspired by modern SaaS wordmarks: geometric spark in rounded square -->
+  <rect x="2" y="8" width="56" height="56" rx="16" fill="url(#mGrad)"/>
+  <path d="M30 18.5c1.1 8.2 5.4 14.1 12.5 17.5C35.4 39.4 31.1 45.3 30 53.5 28.9 45.3 24.6 39.4 17.5 36 24.6 32.6 28.9 26.7 30 18.5Z" fill="white"/>
+  <circle cx="46.5" cy="20" r="2.4" fill="#F0B84A"/>
+  <circle cx="49.5" cy="27.5" r="1.4" fill="white" fill-opacity=".85"/>
+  <!-- Wordmark: bold modern tracking like Stripe/Notion clarity -->
+  <text x="74" y="36" font-family="Syne, Arial Black, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="-1.2" fill="#06262C">Magic</text>
+  <text x="74" y="56" font-family="Outfit, Arial, sans-serif" font-size="12.5" font-weight="600" letter-spacing="4.5" fill="#1AA7B5">CLEANING</text>
+</svg>
