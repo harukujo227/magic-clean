@@ -148,7 +148,7 @@ export function Hero() {
             </h1>
 
             <p className="mb-3 max-w-[40ch] text-lg leading-relaxed text-white/82">
-              House, office and restaurant cleaning from Peterborough
+              House, office and restaurant cleaning from Huntingdonshire 
               and Cambridgeshire Areas. Friendly team — ready to start immediately.
             </p>
 
