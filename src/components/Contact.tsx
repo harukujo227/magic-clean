@@ -163,9 +163,9 @@ export function Contact() {
                 <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ink-soft">
                   Company address
                 </p>
-                <p className="mt-1 text-lg font-semibold text-ink">
+                {/* <p className="mt-1 text-lg font-semibold text-ink">
                   {site.companyAddress.line1}
-                </p>
+                </p> */}
                 <p className="text-ink-soft">{site.companyAddress.line2}</p>
                 <p className="text-ink-soft">{site.companyAddress.line3}</p>
               </div>
