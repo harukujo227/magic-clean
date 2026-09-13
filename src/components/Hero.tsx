@@ -149,7 +149,8 @@ export function Hero() {
 
             <p className="mb-3 max-w-[40ch] text-lg leading-relaxed text-white/82">
               House, office and restaurant cleaning from Huntingdonshire 
-              and Cambridgeshire Areas. Friendly team — ready to start immediately.
+              and Cambridgeshire Areas.<br></br>
+              Friendly team — ready to start immediately.
             </p>
 
             <p className="mb-7 text-sm font-medium tracking-wide text-gold/90">
