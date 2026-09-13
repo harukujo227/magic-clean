@@ -1,14 +1,13 @@
 import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
-import { FooterMap } from "@/components/FooterMap";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-ink text-white/78">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 lg:grid-cols-[1.1fr_0.8fr_0.9fr_1.1fr] lg:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 lg:grid-cols-3 lg:px-8">
         <div>
           <Image
             src="/images/magicclean-logo-transparent.png"
@@ -64,8 +63,6 @@ export function Footer() {
             </p>
           </div>
         </div>
-
-        <FooterMap />
       </div>
 
       <div className="border-t border-white/10">
