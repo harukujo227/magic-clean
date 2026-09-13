@@ -7,7 +7,6 @@ export const site = {
   email: "monika.mirga@yahoo.co.uk",
   emailHref: "mailto:monika.mirga@yahoo.co.uk",
   companyAddress: {
-    line1: "30 Pheasant Way, Yaxley",
     line2: "Peterborough, Cambridgeshire",
     line3: "United Kingdom",
     display: "30 Pheasant Way, Yaxley, Peterborough, Cambridgeshire, United Kingdom",
@@ -17,7 +16,6 @@ export const site = {
   counties: ["Cambridgeshire", "Huntingdonshire", "Peterborough"] as const,
   towns: [
     "Peterborough",
-    "Yaxley",
     "Cambridge",
     "Huntingdon",
     "St Neots",

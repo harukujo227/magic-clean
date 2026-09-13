@@ -73,7 +73,7 @@ export function Footer() {
           <p>
             © {year} {site.name}. All rights reserved.
           </p>
-          <p>Yaxley · Peterborough · Cambridgeshire</p>
+          <p>Peterborough · Cambridgeshire</p>
         </div>
       </div>
     </footer>
