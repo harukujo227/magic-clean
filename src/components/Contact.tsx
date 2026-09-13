@@ -18,21 +18,33 @@ const fieldClass =
 
 type StatusKind = "idle" | "loading" | "success" | "error";
 
+const UK_DIAL_CODE = "44";
+
+function formatUkPhone(local: string) {
+  const digits = local.replace(/\D/g, "").replace(/^0+/, "");
+  return digits ? `+${UK_DIAL_CODE}${digits}` : "";
+}
+
 export function Contact() {
   const reduce = useReducedMotion();
   const [status, setStatus] = useState("");
   const [kind, setKind] = useState<StatusKind>("idle");
+  const [phoneLocal, setPhoneLocal] = useState("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
 
+    const street = String(data.get("address") || "").trim();
+    const postcode = String(data.get("postcode") || "").trim().toUpperCase();
+
     const payload = {
       name: String(data.get("name") || "").trim(),
-      phone: String(data.get("phone") || "").trim(),
+      phone: formatUkPhone(phoneLocal),
       email: String(data.get("email") || "").trim(),
-      address: String(data.get("address") || "").trim(),
+      address: street,
+      postcode,
       workStyle: String(data.get("workStyle") || "").trim(),
       service: String(data.get("service") || "").trim(),
       message: String(data.get("message") || "").trim(),
@@ -44,6 +56,7 @@ export function Contact() {
       !payload.phone ||
       !payload.email ||
       !payload.address ||
+      !payload.postcode ||
       !payload.workStyle ||
       !payload.service
     ) {
@@ -79,6 +92,7 @@ export function Contact() {
       setKind("success");
       setStatus("Sent — thank you! We’ll get back to you as soon as possible.");
       form.reset();
+      setPhoneLocal("");
     } catch {
       setKind("error");
       setStatus("Network error. Please try again or call us.");
@@ -207,17 +221,43 @@ export function Contact() {
                 className={fieldClass}
               />
             </Field>
-            <Field label="Phone" htmlFor="phone">
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                required
-                placeholder="+44 …"
-                className={fieldClass}
-              />
-            </Field>
+
+            <div className="grid gap-1.5">
+              <span className="text-sm font-semibold text-ink-soft" id="phone-label">
+                Phone
+              </span>
+              <div className="flex gap-2">
+                <div
+                  className="flex shrink-0 items-center gap-2 rounded-xl border border-line bg-mist/70 px-3 py-3.5"
+                  aria-hidden
+                >
+                  <UkFlag className="h-4 w-[1.35rem] rounded-[2px] shadow-sm" />
+                  <span className="text-sm font-semibold tabular-nums text-ink">
+                    +{UK_DIAL_CODE}
+                  </span>
+                </div>
+                <input
+                  id="phone"
+                  name="phoneLocal"
+                  type="tel"
+                  inputMode="numeric"
+                  autoComplete="tel-national"
+                  required
+                  value={phoneLocal}
+                  onChange={(e) =>
+                    setPhoneLocal(e.target.value.replace(/[^\d\s]/g, ""))
+                  }
+                  placeholder="7400 126 612"
+                  className={fieldClass}
+                  aria-labelledby="phone-label"
+                  aria-describedby="phone-country"
+                />
+                <span id="phone-country" className="sr-only">
+                  United Kingdom country code +44 is fixed and cannot be changed
+                </span>
+              </div>
+            </div>
+
             <Field label="Email" htmlFor="email" className="sm:col-span-2">
               <input
                 id="email"
@@ -229,6 +269,7 @@ export function Contact() {
                 className={fieldClass}
               />
             </Field>
+
             <Field
               label="Home address"
               htmlFor="address"
@@ -240,10 +281,23 @@ export function Contact() {
                 type="text"
                 autoComplete="street-address"
                 required
-                placeholder="House number, street, town, postcode"
+                placeholder="House number, street, town"
                 className={fieldClass}
               />
             </Field>
+
+            <Field label="Postcode" htmlFor="postcode" className="sm:col-span-2 sm:max-w-xs">
+              <input
+                id="postcode"
+                name="postcode"
+                type="text"
+                autoComplete="postal-code"
+                required
+                placeholder="e.g. PE7 3JZ"
+                className={`${fieldClass} uppercase`}
+              />
+            </Field>
+
             <Field label="Work style" htmlFor="workStyle">
               <select
                 id="workStyle"
@@ -343,5 +397,23 @@ function Field({
       </label>
       {children}
     </div>
+  );
+}
+
+function UkFlag({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 60 40"
+      className={className}
+      role="img"
+      aria-label="United Kingdom"
+    >
+      <title>United Kingdom</title>
+      <rect width="60" height="40" fill="#012169" />
+      <path d="M0 0 L60 40 M60 0 L0 40" stroke="#fff" strokeWidth="8" />
+      <path d="M0 0 L60 40 M60 0 L0 40" stroke="#C8102E" strokeWidth="5" />
+      <path d="M30 0 V40 M0 20 H60" stroke="#fff" strokeWidth="13" />
+      <path d="M30 0 V40 M0 20 H60" stroke="#C8102E" strokeWidth="7" />
+    </svg>
   );
 }

@@ -37,12 +37,13 @@ export function Header() {
       <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between gap-4 px-5 lg:px-8">
         <Link href="#top" className="shrink-0" aria-label="Magic Clean home">
           <Image
-            src="/images/logo.png"
+            src="/images/magicclean-logo-transparent.png"
             alt="Magic Clean Cleaning Services"
-            width={200}
-            height={72}
+            width={320}
+            height={213}
             priority
-            className="h-12 w-auto sm:h-14"
+            unoptimized
+            className="h-[3.75rem] w-auto sm:h-[4.25rem]"
           />
         </Link>
 

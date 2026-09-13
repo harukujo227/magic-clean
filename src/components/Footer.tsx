@@ -11,11 +11,12 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 lg:grid-cols-[1.1fr_0.8fr_0.9fr_1.1fr] lg:px-8">
         <div>
           <Image
-            src="/images/logo.png"
+            src="/images/magicclean-logo-transparent.png"
             alt="Magic Clean Cleaning Services"
-            width={200}
-            height={72}
-            className="mb-4 h-14 w-auto"
+            width={300}
+            height={200}
+            unoptimized
+            className="mb-4 h-[5.5rem] w-auto sm:h-28"
           />
           <p className="max-w-[28ch] leading-relaxed">
             House and office cleaning across {site.area}.

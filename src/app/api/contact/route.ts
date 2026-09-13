@@ -6,6 +6,7 @@ const schema = z.object({
   phone: z.string().trim().min(5).max(40),
   email: z.string().trim().email().max(120),
   address: z.string().trim().min(3).max(300),
+  postcode: z.string().trim().min(2).max(12),
   workStyle: z.string().trim().min(1).max(120),
   service: z.string().trim().min(1).max(120),
   message: z.string().trim().max(2000).optional().default(""),
@@ -29,8 +30,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
 
-    const { name, phone, email, address, workStyle, service, message } =
-      parsed.data;
+    const {
+      name,
+      phone,
+      email,
+      address,
+      postcode,
+      workStyle,
+      service,
+      message,
+    } = parsed.data;
     const to = process.env.CONTACT_TO_EMAIL || "monika.mirga@yahoo.co.uk";
     const subject = `Magic Cleaning quote — ${workStyle} / ${service}`;
     const text = [
@@ -38,6 +47,7 @@ export async function POST(request: Request) {
       `Phone: ${phone}`,
       `Email: ${email}`,
       `Home address: ${address}`,
+      `Postcode: ${postcode}`,
       `Work style: ${workStyle}`,
       `Service: ${service}`,
       "",
@@ -90,6 +100,7 @@ export async function POST(request: Request) {
           email,
           phone,
           address,
+          postcode,
           workStyle,
           service,
           message: message || "(none)",

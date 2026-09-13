@@ -14,7 +14,7 @@ export function AmbientMusic() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const audio = new Audio("/audio/mood-feelgood.mp3");
+    const audio = new Audio("/audio/music.mp3");
     audio.loop = true;
     audio.preload = "auto";
     audio.volume = 0;
@@ -90,11 +90,13 @@ export function AmbientMusic() {
         type="button"
         onClick={toggle}
         aria-pressed={enabled}
-        aria-label={enabled ? "Mute music" : "Play feel-good music"}
+        aria-label={enabled ? "Mute music" : "Play music"}
         title={enabled ? "Mute music" : "Play music"}
         className={cn(
-          "inline-flex size-12 items-center justify-center rounded-full border border-line bg-white/95 text-teal shadow-[0_12px_30px_rgba(6,38,44,0.14)] backdrop-blur-md transition hover:-translate-y-0.5",
-          enabled && "border-teal/30 bg-teal text-white",
+          "inline-flex size-12 items-center justify-center rounded-full border shadow-[0_12px_30px_rgba(6,38,44,0.14)] backdrop-blur-md transition hover:-translate-y-0.5",
+          enabled
+            ? "border-teal/30 bg-teal text-white"
+            : "border-line bg-white/95 text-teal",
         )}
       >
         {enabled ? (
