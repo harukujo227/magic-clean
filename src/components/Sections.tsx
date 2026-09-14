@@ -143,11 +143,11 @@ export function Intro() {
         <Reveal delay={0.1} className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-[0_28px_70px_rgba(6,38,44,0.16)] sm:aspect-[4/3] lg:aspect-[5/4]">
             <Image
-              src="/images/cleaner-vacuum.jpg"
-              alt="Friendly Magic Cleaning professional vacuuming a bright living room"
+              src="/images/service-kitchen.jpg"
+              alt="Bright professionally cleaned kitchen ready for everyday living"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-[center_20%]"
+              className="object-cover object-center"
             />
           </div>
           <div className="absolute -bottom-4 left-4 right-4 grid grid-cols-2 gap-3 sm:left-auto sm:right-6 sm:bottom-6 sm:w-[70%]">
@@ -246,8 +246,8 @@ export function ServiceHighlights() {
           <Reveal delay={0.08}>
             <div className="relative min-h-[320px] overflow-hidden rounded-3xl">
               <Image
-                src="/images/service-office.jpg"
-                alt="Professionally cleaned office"
+                src="/images/clean-restaurant.jpg"
+                alt="Professionally cleaned restaurant dining room"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition duration-700 hover:scale-105"
@@ -347,11 +347,11 @@ export function Transformation() {
           <div className="mt-8 grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
               <Image
-                src="/images/cleaner-smile.jpg"
-                alt="Smiling Magic Cleaning worker ready to help"
+                src="/images/clean-restaurant.jpg"
+                alt="Spotless restaurant dining room ready for guests"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-[center_15%]"
+                className="object-cover object-center"
               />
             </div>
             <div className="rounded-[1.5rem] border border-line bg-white p-7 sm:p-9">
@@ -466,7 +466,7 @@ export function Areas() {
     <section id="areas" className="relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/service-windows.jpg"
+          src="/images/clean-restaurant.jpg"
           alt=""
           fill
           sizes="100vw"

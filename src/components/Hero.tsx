@@ -2,49 +2,21 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, MapPin, Phone, Sparkles } from "lucide-react";
 import { site } from "@/lib/site";
 
-/** Slides 01 & 02 removed — start from sparkling magic clean */
-const slides = [
-  {
-    id: 1,
-    image: "/images/magic-sparkle-clean.jpg",
-    label: "Magic sparkling clean",
-    object: "object-cover object-[center_25%]",
-  },
-  {
-    id: 2,
-    image: "/images/process-restaurant-clean.jpg",
-    label: "Restaurant floors",
-    object: "object-cover object-center",
-  },
-  {
-    id: 3,
-    image: "/images/cleaner-vacuum.jpg",
-    label: "Homes that shine",
-    object: "object-cover object-[center_20%]",
-  },
-  {
-    id: 4,
-    image: "/images/clean-restaurant.jpg",
-    label: "Venues & dining rooms",
-    object: "object-cover object-center",
-  },
-  {
-    id: 5,
-    image: "/images/service-kitchen.jpg",
-    label: "Spotless kitchens",
-    object: "object-cover object-center",
-  },
-  {
-    id: 6,
-    image: "/images/process-steam.jpg",
-    label: "Spotless kitchens",
-    object: "object-cover object-center",
-  },
+const videos = [
+  { id: 1, src: "/videos/1.mp4", label: "Professional cleaning" },
+  { id: 2, src: "/videos/2.mp4", label: "Fresh spaces" },
+  { id: 3, src: "/videos/3.mp4", label: "Detail care" },
+  { id: 4, src: "/videos/4.mp4", label: "Sparkling finish" },
+  { id: 5, src: "/videos/5.mp4", label: "Ready homes" },
+  { id: 6, src: "/videos/6.mp4", label: "Clean venues" },
 ] as const;
+
+/** Fallback still — no people */
+const POSTER = "/images/service-kitchen.jpg";
 
 function SparkleField() {
   return (
@@ -61,46 +33,71 @@ function SparkleField() {
 export function Hero() {
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
     if (reduce) return;
     const timer = window.setInterval(() => {
-      setIndex((current) => (current + 1) % slides.length);
-    }, 5200);
+      setIndex((current) => (current + 1) % videos.length);
+    }, 8000);
     return () => window.clearInterval(timer);
   }, [reduce]);
+
+  useEffect(() => {
+    if (reduce) return;
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i === index) {
+        video.currentTime = 0;
+        void video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, [index, reduce]);
 
   return (
     <section
       className="relative isolate overflow-hidden text-white"
       aria-labelledby="hero-brand"
     >
-      <div className="absolute inset-0 -z-10">
-        {slides.map((item, i) => (
-          <motion.div
-            key={item.id}
-            className="absolute inset-0"
-            initial={false}
-            animate={{
-              opacity: i === index ? 1 : 0,
-              scale: i === index && !reduce ? 1.05 : 1,
-            }}
-            transition={{
-              opacity: { duration: 1.4, ease: [0.4, 0, 0.2, 1] },
-              scale: { duration: 7, ease: "linear" },
-            }}
-            style={{ zIndex: i === index ? 1 : 0 }}
-          >
-            <Image
-              src={item.image}
-              alt=""
-              fill
-              priority={i < 2}
-              sizes="100vw"
-              className={item.object}
-            />
-          </motion.div>
-        ))}
+      <div className="absolute inset-0 -z-10 bg-[#041e24]">
+        {reduce ? (
+          <Image
+            src={POSTER}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        ) : (
+          videos.map((item, i) => (
+            <motion.div
+              key={item.id}
+              className="absolute inset-0"
+              initial={false}
+              animate={{ opacity: i === index ? 1 : 0 }}
+              transition={{
+                opacity: { duration: 1.2, ease: [0.4, 0, 0.2, 1] },
+              }}
+              style={{ zIndex: i === index ? 1 : 0 }}
+            >
+              <video
+                ref={(el) => {
+                  videoRefs.current[i] = el;
+                }}
+                src={item.src}
+                muted
+                loop
+                playsInline
+                preload={i === 0 ? "auto" : "metadata"}
+                aria-hidden
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+            </motion.div>
+          ))
+        )}
         <div className="absolute inset-0 z-[2] bg-[linear-gradient(115deg,rgba(4,30,36,0.88)_0%,rgba(4,30,36,0.55)_48%,rgba(4,30,36,0.3)_100%)]" />
         <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_75%_20%,rgba(240,184,74,0.16),transparent_40%)]" />
         {!reduce && (
@@ -115,7 +112,6 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-2xl"
         >
-            {/* Professional availability badge with sparkle stars */}
             <div className="availability-badge relative mb-5 inline-flex items-center gap-2.5 overflow-hidden rounded-full border border-gold/50 bg-[rgba(8,40,44,0.55)] px-5 py-2.5 shadow-[0_0_24px_rgba(240,184,74,0.22)] backdrop-blur-md">
               <SparkleField />
               <Sparkles className="relative z-[1] size-4 text-gold" aria-hidden />
@@ -148,14 +144,10 @@ export function Hero() {
             </h1>
 
             <p className="mb-3 max-w-[40ch] text-lg leading-relaxed text-white/82">
-              House, office and restaurant cleaning from Huntingdonshire 
+              House, office and restaurant cleaning from Huntingdonshire
               and Cambridgeshire Areas.<br></br>
               Friendly team — ready to start immediately.
             </p>
-
-            {/* <p className="mb-7 text-sm font-medium tracking-wide text-gold/90">
-              {slides[index].label}
-            </p> */}
 
             <div className="mb-6 flex flex-wrap gap-2">
               {site.counties.map((county) => (
