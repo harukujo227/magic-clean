@@ -4,17 +4,11 @@ import Image from "next/image";
 import {
   Building2,
   Clock3,
-  Droplets,
   Home,
-  Layers,
   Leaf,
   ShieldCheck,
-  Shirt,
-  Sparkles,
-  SquareStack,
   Star,
   Zap,
-  Wind,
   type LucideIcon,
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -44,36 +38,36 @@ function Reveal({
   );
 }
 
-const highlightServices: { title: string; body: string; icon: LucideIcon }[] = [
+const highlightServices: { title: string; body: string; icon: string }[] = [
   {
     title: "Standard cleaning",
     body: "Regular upkeep that keeps homes and offices consistently fresh.",
-    icon: Sparkles,
+    icon: "/images/service-icons/standard.png",
   },
   {
     title: "Deep cleaning",
     body: "One-off refreshes that reach the details everyday cleaning misses.",
-    icon: Layers,
+    icon: "/images/service-icons/deep.png",
   },
   {
     title: "Window washing",
     body: "Clear glass inside and out for brighter rooms and reception areas.",
-    icon: Wind,
+    icon: "/images/service-icons/window.png",
   },
   {
     title: "Floor care",
     body: "Vacuuming, mopping and careful floor finishes that look sharp.",
-    icon: SquareStack,
+    icon: "/images/service-icons/floor.png",
   },
   {
     title: "Ironing",
     body: "Optional ironing support so laundry doesn’t eat your evening.",
-    icon: Shirt,
+    icon: "/images/service-icons/ironing.png",
   },
   {
     title: "Porch & patio",
     body: "Entrance and outdoor tidy-ups that make a strong first impression.",
-    icon: Droplets,
+    icon: "/images/service-icons/patio.png",
   },
 ];
 
@@ -180,8 +174,10 @@ export function Intro() {
 
 export function ServiceHighlights() {
   return (
-    <section id="services" className="bg-mist/70">
-      <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+    <section id="services" className="relative overflow-hidden bg-mist/70">
+      <div className="pointer-events-none absolute -left-20 top-24 h-64 w-64 rounded-full bg-aqua/15 blur-3xl" />
+      <div className="pointer-events-none absolute -right-16 bottom-10 h-72 w-72 rounded-full bg-teal/10 blur-3xl" />
+      <div className="relative mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
         <header className="mx-auto mb-12 max-w-2xl text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-aqua">
             What we offer
@@ -195,17 +191,27 @@ export function ServiceHighlights() {
           </p>
         </header>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {highlightServices.map((service, i) => (
             <Reveal key={service.title} delay={i * 0.05}>
-              <article className="group h-full rounded-2xl border border-line bg-white p-6 shadow-[0_12px_40px_rgba(6,38,44,0.04)] transition duration-300 hover:-translate-y-1 hover:border-teal/25 hover:shadow-[0_20px_50px_rgba(6,38,44,0.1)]">
-                <div className="mb-5 inline-flex size-12 items-center justify-center rounded-xl bg-teal/8 text-teal transition group-hover:bg-teal group-hover:text-white">
-                  <service.icon className="size-6" aria-hidden />
+              <article className="service-card group h-full">
+                <div className="service-card-shine" aria-hidden />
+                <div className="relative z-10 flex h-full flex-col rounded-[1.15rem] bg-white p-6">
+                  <div className="mb-5 inline-flex size-16 items-center justify-center rounded-2xl bg-mist/80 ring-1 ring-teal/10 transition duration-300 group-hover:bg-teal/8 group-hover:ring-teal/25">
+                    <Image
+                      src={service.icon}
+                      alt=""
+                      width={56}
+                      height={56}
+                      unoptimized
+                      className="size-12 object-contain transition duration-500 group-hover:scale-110 group-hover:-rotate-3"
+                    />
+                  </div>
+                  <h3 className="mb-2 font-display text-xl tracking-tight text-ink">
+                    {service.title}
+                  </h3>
+                  <p className="leading-relaxed text-ink-soft">{service.body}</p>
                 </div>
-                <h3 className="mb-2 font-display text-xl tracking-tight text-ink">
-                  {service.title}
-                </h3>
-                <p className="leading-relaxed text-ink-soft">{service.body}</p>
               </article>
             </Reveal>
           ))}
@@ -219,7 +225,7 @@ export function ServiceHighlights() {
                 alt="Professionally cleaned kitchen"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover transition duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/25 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 text-white">
@@ -244,7 +250,7 @@ export function ServiceHighlights() {
                 alt="Professionally cleaned office"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover transition duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/25 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 text-white">
@@ -415,8 +421,8 @@ export function WhyUs() {
           <div className="grid gap-4 sm:grid-cols-2">
             {reasons.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.06}>
-                <article className="h-full rounded-2xl border border-line bg-foam p-6">
-                  <div className="mb-4 inline-flex size-11 items-center justify-center rounded-full bg-teal text-white">
+                <article className="why-card group h-full rounded-2xl border border-line bg-foam p-6 transition duration-300 hover:-translate-y-1 hover:border-teal/30 hover:bg-white hover:shadow-[0_18px_40px_rgba(6,38,44,0.08)]">
+                  <div className="mb-4 inline-flex size-11 items-center justify-center rounded-full bg-teal text-white transition duration-300 group-hover:scale-110 group-hover:shadow-[0_0_0_6px_rgba(42,160,176,0.18)]">
                     <item.icon className="size-5" aria-hidden />
                   </div>
                   <h3 className="mb-2 font-display text-lg tracking-tight text-ink">
