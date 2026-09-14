@@ -143,7 +143,7 @@ export function Intro() {
         <Reveal delay={0.1} className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-[0_28px_70px_rgba(6,38,44,0.16)] sm:aspect-[4/3] lg:aspect-[5/4]">
             <Image
-              src="/images/service-kitchen.jpg"
+              src="/images/cleaner-smile.jpg"
               alt="Bright professionally cleaned kitchen ready for everyday living"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -246,8 +246,8 @@ export function ServiceHighlights() {
           <Reveal delay={0.08}>
             <div className="relative min-h-[320px] overflow-hidden rounded-3xl">
               <Image
-                src="/images/clean-restaurant.jpg"
-                alt="Professionally cleaned restaurant dining room"
+                src="/images/service-office.jpg"
+                alt="Professionally cleaned office"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition duration-700 hover:scale-105"
@@ -466,7 +466,7 @@ export function Areas() {
     <section id="areas" className="relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/clean-restaurant.jpg"
+          src="/images/service-windows.jpg"
           alt=""
           fill
           sizes="100vw"
