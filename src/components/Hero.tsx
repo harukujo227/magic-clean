@@ -139,7 +139,7 @@ export function Hero() {
                 ✦
               </span>
               <span className="text-sm font-bold tracking-[0.08em] text-teal uppercase">
-                Special offer · free estimate
+                Special offer · free quote
               </span>
             </div>
 
