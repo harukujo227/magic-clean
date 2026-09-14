@@ -347,8 +347,8 @@ export function Transformation() {
           <div className="mt-8 grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
               <Image
-                src="/images/clean-restaurant.jpg"
-                alt="Spotless restaurant dining room ready for guests"
+                src="/images/friendly-results.jpg"
+                alt="Freshly cleaned bright home living space ready for family life"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-center"

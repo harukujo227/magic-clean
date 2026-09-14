@@ -37,14 +37,6 @@ export function Hero() {
 
   useEffect(() => {
     if (reduce) return;
-    const timer = window.setInterval(() => {
-      setIndex((current) => (current + 1) % videos.length);
-    }, 8000);
-    return () => window.clearInterval(timer);
-  }, [reduce]);
-
-  useEffect(() => {
-    if (reduce) return;
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
       if (i === index) {
@@ -55,6 +47,10 @@ export function Hero() {
       }
     });
   }, [index, reduce]);
+
+  function goNext() {
+    setIndex((current) => (current + 1) % videos.length);
+  }
 
   return (
     <section
@@ -79,7 +75,7 @@ export function Hero() {
               initial={false}
               animate={{ opacity: i === index ? 1 : 0 }}
               transition={{
-                opacity: { duration: 1.2, ease: [0.4, 0, 0.2, 1] },
+                opacity: { duration: 0.9, ease: [0.4, 0, 0.2, 1] },
               }}
               style={{ zIndex: i === index ? 1 : 0 }}
             >
@@ -89,9 +85,9 @@ export function Hero() {
                 }}
                 src={item.src}
                 muted
-                loop
                 playsInline
                 preload={i === 0 ? "auto" : "metadata"}
+                onEnded={i === index ? goNext : undefined}
                 aria-hidden
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
