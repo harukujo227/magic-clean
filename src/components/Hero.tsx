@@ -40,9 +40,9 @@ const slides = [
   },
   {
     id: 6,
-    image: "/images/process-windows.jpg",
-    label: "Crystal-clear glass",
-    object: "object-cover object-[center_30%]",
+    image: "/images/process-steam.jpg",
+    label: "Spotless kitchens",
+    object: "object-cover object-center",
   },
 ] as const;
 
@@ -153,9 +153,9 @@ export function Hero() {
               Friendly team — ready to start immediately.
             </p>
 
-            <p className="mb-7 text-sm font-medium tracking-wide text-gold/90">
+            {/* <p className="mb-7 text-sm font-medium tracking-wide text-gold/90">
               {slides[index].label}
-            </p>
+            </p> */}
 
             <div className="mb-6 flex flex-wrap gap-2">
               {site.counties.map((county) => (
