@@ -9,7 +9,7 @@ export const site = {
   companyAddress: {
     line2: "Peterborough, Cambridgeshire",
     line3: "United Kingdom",
-    display: "30 Pheasant Way, Yaxley, Peterborough, Cambridgeshire, United Kingdom",
+    display: "Peterborough, Cambridgeshire, United Kingdom",
   },
   area: "Cambridgeshire and Huntingdonshire",
   availability: "Available to start immediately",

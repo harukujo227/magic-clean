@@ -359,7 +359,7 @@ export function Contact() {
             ) : (
               <Send className="size-4" aria-hidden />
             )}
-            {kind === "loading" ? "Sending…" : "Send enquiry — start ASAP"}
+            {kind === "loading" ? "Sending…" : "Send Quote"}
           </button>
           <p
             className={`mt-3 min-h-[1.4em] text-center text-sm font-medium ${

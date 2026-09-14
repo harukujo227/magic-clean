@@ -71,7 +71,7 @@ export function Header() {
             href="#contact"
             className="hidden rounded-full bg-teal px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(11,107,114,0.28)] transition hover:bg-teal-deep sm:inline-flex"
           >
-            Free estimate
+            Send Quote ⭐
           </a>
           <button
             type="button"

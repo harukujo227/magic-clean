@@ -174,7 +174,7 @@ export function Hero() {
                 href="#contact"
                 className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3.5 text-[1.02rem] font-semibold text-ink transition hover:brightness-105"
               >
-                Book free estimate
+                Get Quote ⭐
                 <ArrowRight className="size-4" aria-hidden />
               </a>
               <a
