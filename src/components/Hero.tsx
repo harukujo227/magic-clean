@@ -12,37 +12,31 @@ const slides = [
     id: 1,
     image: "/images/magic-sparkle-clean.jpg",
     label: "Magic sparkling clean",
-    object: "object-cover object-[center_25%]",
   },
   {
     id: 2,
     image: "/images/process-restaurant-clean.jpg",
     label: "Restaurant floors",
-    object: "object-cover object-center",
   },
   {
     id: 3,
     image: "/images/cleaner-vacuum.jpg",
     label: "Homes that shine",
-    object: "object-cover object-[center_20%]",
   },
   {
     id: 4,
     image: "/images/clean-restaurant.jpg",
     label: "Venues & dining rooms",
-    object: "object-cover object-center",
   },
   {
     id: 5,
     image: "/images/service-kitchen.jpg",
     label: "Spotless kitchens",
-    object: "object-cover object-center",
   },
   {
     id: 6,
     image: "/images/process-steam.jpg",
     label: "Spotless kitchens",
-    object: "object-cover object-center",
   },
 ] as const;
 
@@ -75,7 +69,7 @@ export function Hero() {
       className="relative isolate overflow-hidden text-white"
       aria-labelledby="hero-brand"
     >
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 bg-[#041e24]">
         {slides.map((item, i) => (
           <motion.div
             key={item.id}
@@ -83,11 +77,9 @@ export function Hero() {
             initial={false}
             animate={{
               opacity: i === index ? 1 : 0,
-              scale: i === index && !reduce ? 1.05 : 1,
             }}
             transition={{
               opacity: { duration: 1.4, ease: [0.4, 0, 0.2, 1] },
-              scale: { duration: 7, ease: "linear" },
             }}
             style={{ zIndex: i === index ? 1 : 0 }}
           >
@@ -97,7 +89,7 @@ export function Hero() {
               fill
               priority={i < 2}
               sizes="100vw"
-              className={item.object}
+              className="object-contain object-center"
             />
           </motion.div>
         ))}
